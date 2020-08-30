@@ -13,12 +13,19 @@ class Contact extends Component {
             contactType: 'Tel.',
             message: ''
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange = this .handleInputChange.bind(this);
     }
     handleInputChange(event) {
-
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+        });
     }
     handleSubmit(event) {
-        
+        event.preventDefault();
     }
     render() {
         return(
@@ -145,5 +152,4 @@ class Contact extends Component {
         );
     }
 }
-
 export default Contact;
