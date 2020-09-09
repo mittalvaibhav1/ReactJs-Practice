@@ -1,4 +1,4 @@
-import React , {Component} from 'react';
+import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardImg, CardText, BreadcrumbItem, Breadcrumb } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Row, Col, Button, Modal, ModalHeader, ModalBody, Label } from 'reactstrap';
@@ -21,7 +21,7 @@ function RenderDish({ dish }) {
         </div>
     )
 }
-function RenderComments({ comments }) {
+function RenderComments({ comments, addComment, dishId }) {
     const comment = comments.map((comment) => {
         return (
             <li key={comment.id}>
@@ -36,7 +36,7 @@ function RenderComments({ comments }) {
             <ul className="list-unstyled">
                 {comment}
             </ul>
-            <CommentForm />
+            <CommentForm dishId={dishId} addComment={addComment} />
         </div>
     )
 }
@@ -57,7 +57,9 @@ const DishDetail = (props) => {
                 </div>
                 <div className="row">
                     <RenderDish dish={props.dish} />
-                    <RenderComments comments={props.comments} />
+                    <RenderComments comments={props.comments}
+                        addComment={props.addComment}
+                        dishId={props.dish.id} />
                 </div>
             </div>
         )
@@ -85,8 +87,7 @@ class CommentForm extends Component {
     }
     handleSubmit(values) {
         this.toggleModal();
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.name, values.message);
     }
 
     render() {
