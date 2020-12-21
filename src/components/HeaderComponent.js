@@ -3,6 +3,7 @@ import { Modal,ModalBody,ModalHeader,Button,Navbar, NavbarBrand, Jumbotron,Nav,N
 import {NavLink} from 'react-router-dom';
 class Header extends Component {
     constructor(props){
+        super(props);
         this.state = {
             isNavOpen: false,
             isModalOpen: false
