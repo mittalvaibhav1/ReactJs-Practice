@@ -8,7 +8,7 @@ export const Dishes = (state = {
         case ActionTypes.ADD_DISHES:
             return {
                 isLoading : false,
-                dishes : payload,
+                dishes : action.payload,
                 errMess : null
             }
         case ActionTypes.DISHES_LOADING:
@@ -21,7 +21,7 @@ export const Dishes = (state = {
             return {
                 isLoading : false,
                 dishes : [],
-                errMess : payload
+                errMess : action.payload
             }
         default :
             return state;
