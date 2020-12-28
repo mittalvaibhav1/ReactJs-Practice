@@ -5,18 +5,24 @@ export const Comments = (state = {
         comments: []
     }, action) => {
     switch (action.type) {
+        case ActionTypes.ADD_COMMENTS :
+            return {
+                ...state,
+                errMess : '',
+                comments : action.payload
+            }
         case ActionTypes.COMMENTS_FAILED:
             return {
+                ...state,
                 errMess : action.payload,
                 comments : []
             }
         case ActionTypes.ADD_COMMENT:
             var comment = action.payload;
-            comment.id = state.comments.length;
-            comment.date = new Date().toISOString();
             return {
+                ...state,
                 errMess : '',
-                comments : [...state.comments,comment]
+                comments : state.comments.concat(comment)
             }
         default:
             return state;
