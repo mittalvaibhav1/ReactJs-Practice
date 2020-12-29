@@ -85,7 +85,7 @@ function About(props) {
                     <Media list>
                         <Stagger in>
                             <Fade in>
-                                {props.isLoading ? <Loading/> : leaders}
+                                {props.isLoading ? <Loading/> : props.errMess ? <h4>{props.errMess}</h4> : leaders}
                             </Fade>
                         </Stagger>
                     </Media>

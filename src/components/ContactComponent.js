@@ -16,8 +16,8 @@ class Contact extends Component {
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        //console.log('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(JSON.stringify(values));
         this.props.resetFeedbackForm();
     }
 
@@ -75,7 +75,7 @@ class Contact extends Component {
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }}
-                                         />
+                                        />
                                     <Errors
                                         className="text-danger"
                                         model=".firstname"
@@ -85,7 +85,7 @@ class Contact extends Component {
                                             minLength: 'Must be greater than 2 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
-                                     />
+                                    />
                                 </Col>
                             </Row>
                             <Row className="form-group">
